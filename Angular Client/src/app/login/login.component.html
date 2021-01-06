@@ -1,0 +1,141 @@
+<div
+  *ngIf="alert"
+  class="container alert alert-success alert-dismissible fade show"
+  role="alert"
+>
+  <strong>Success !</strong> New Owner Registered.
+  <button
+    (click)="closeAlert()"
+    type="button"
+    class="close"
+    data-dimiss="alert"
+    aria-label="close"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-4 register-res">
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Owner Login</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loginForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="username">Username/Email</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="username"
+              placeholder="Username/Email"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submittedL && myForm.username.errors?.required"
+            >
+              Username/Email is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submittedL && myForm.password.errors?.required"
+            >
+              Password is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 register-res">
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Add New Owner</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="signupForm" #fform="ngForm" (ngSubmit)="onSignup()">
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="firstname"
+              placeholder="First Name"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && sForm.firstname.errors?.required"
+            >
+              First Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="lastname"
+              placeholder="Last Name"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && sForm.lastname.errors?.required"
+            >
+              Last Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="username">Username/Email</label>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="username"
+              placeholder="Username/Email"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && sForm.username.errors?.required"
+            >
+              Username/Email is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="submitted && sForm.password.errors?.required"
+            >
+              Password is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

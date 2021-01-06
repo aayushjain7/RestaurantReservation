@@ -1,0 +1,53 @@
+<div class="col-10 offset-1 register-res">
+  <p *ngIf="!Reservations" class="no-data text-center">
+    There is no reservation added yet!
+  </p>
+  <div
+    *ngIf="alert"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>Success !</strong> Reservations has been Updated.
+    <button
+      (click)="closeAlert()"
+      type="button"
+      class="close"
+      data-dimiss="alert"
+      aria-label="close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <table class="table table-bordered" *ngIf="Reservations">
+    <thead class="table-success">
+      <tr>
+        <th scope="col">Reservation ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Number of People</th>
+        <th scope="col">Time</th>
+        <th scope="col">Table Number</th>
+        <th scope="col center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let res of Reservations; let i = index">
+        <th scope="row">{{ res._id }}</th>
+        <td>{{ res.name }}</td>
+        <td>{{ res.phone }}</td>
+        <td>{{ res.count }}</td>
+        <td>{{ res.time }}</td>
+        <td>{{ res.table }}</td>
+        <td class="text-center edit-block">
+          <span class="edit" [routerLink]="['/edit-reservation/', res._id]">
+            <button type="button" class="btn btn-success btn-sm">Edit</button>
+          </span>
+          <span class="delete" (click)="removeReservation(res, i)">
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
